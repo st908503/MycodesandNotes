@@ -1,0 +1,23 @@
+#include <stdio.h>
+void main()
+{
+  int n,i,s,found=0;
+  printf("enter no of elements");
+  scanf("%d",&n);
+  int a[n];
+  printf("enter the elements");
+  for(i=0;i<n;i++){
+    scanf("%d",&a[i]);}
+    printf("enter the element to be searched");
+    scanf("%d",&s);
+    for(i=0;i<n;i++){
+      if(s==a[i]){
+        found=1;
+        break;
+      }
+    }
+    if(found==1)
+      printf("%d",i+1);
+      else
+      printf("not found");
+    }
