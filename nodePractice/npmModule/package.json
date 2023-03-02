@@ -1,0 +1,16 @@
+{
+  "name": "npmmodule",
+  "version": "1.0.0",
+  "description": "My node practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shashank",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "nodemon": "^2.0.19",
+    "validator": "^13.7.0"
+  }
+}

@@ -1,0 +1,173 @@
+/*
+event propagation (event bubbling and event capturing)
+higher order function
+callback function
+function currying (we will see after async js function)
+callback hell
+ajax call using XMLHttprequest
+BONUS section JSON
+Fetch API
+promises
+async-await
+error handling in js
+*/
+
+
+
+/*
+event propagation-
+It is that mode which determines in which order the elements recieve the event
+Event bubbling- The event is first captured bu the innermost element and then propagated to outer elements
+Event capturing- The event is first captured bu the outermost element and then propagated to inner elements
+
+by default always event bubbling is done ie. innermost to outermost
+*/
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const parentID = document.getElementByID('parent')
+        const childID = document.getElementByID('child')
+
+        const parentCall = () => {
+            alert('Parent element');
+        }
+
+        const ChildCall = () => {
+            alert('Child element');
+            //event.stopPropagation(); here it will stop imediately after child alert and no parent alert will be displayed
+        }
+
+        // Event bubbling
+        parentID.addEventListner('click', parentCall, false)
+        childID.addEventListner('click', ChildCall, false)
+
+        // third argument of event listener decides whether its bubbling or capturing by dfault its set to false that means bubbling(child to parent).If we set it to true that means capturing(parent to child)
+        // by default third
+
+        // Event capturing
+        parentID.addEventListner('click', parentCall, true)
+        childID.addEventListner('click', ChildCall, true)
+
+
+
+
+
+
+        /*
+        higher order function-
+        function which takes another function as an arguments is called HOF
+        */
+
+        /*
+        callback function-
+        function which get passed as an argument to another function is called as CBF
+        */
+
+        const add = (a, b) => {
+            return a + b;
+        }
+
+        const sub = (a, b) => {
+            return Math.abs(a - b);
+        }
+
+        const mul = (a, b) => {
+            return a * b;
+        }
+
+        const calculator = (num1, num2, operator) => {
+            return operator(num1, num2);
+        }
+        calculator();
+
+        // here calculator is HOF and add, sub and mul are CBF
+
+
+
+
+        //hOISTING IN JS
+        // Hoisting is a mechanism where variables and function declerations are moved to the top of their scope before the code. hOISTING IS AVAOIDED BY USING LET KEYWORD Instead of var
+
+
+        // sCOPE CHAIN- Scope chain is used to resolve the value of variable name in js
+
+
+        // In lexical scoping parent function cant access child function data but child function can access parent function data
+
+
+        // Closure in javascript
+
+        // difference between synchronous abd asynchronous JS
+
+        const fun1 = () => {
+            setInterval(() => {
+                console.log("function 1 is called");
+            }, 2000);
+        }
+
+
+        const fun2 = () => {
+            console.log("function 2 is called");
+            fun1();
+            console.log("function 2 is called again ")
+
+        }
+
+        fun2();
+        // here for 3 sec settimeintervel went to web api context and webapi holds it and sends to message queue.Then event loop's work is to take everything from message loop that came via web api and place it to execution stack.
+
+
+
+        // Function currying
+
+        // currying is a technique of evaluating a function with multiple arguments, into sequence of functions with single argument
+
+        // output of sum(5)(3)(8)?
+
+        function sum(num1) {
+            console.log(num1);
+            return function (num2) {
+                console.log(num1, num2);
+                return function (num3) {
+                    console.log(num1, num2, num3);
+                }
+            }
+        }
+
+
+        // sum(5)(3)(8) is same as
+        const sum = (num1) => (num2) => (num3) => console.log(num1 + num2 + num3);
+
+
+
+        // callback hell
+
+        setTimeout(() => {
+            console.log("1");
+            setTimeout(() => {
+                console.log("2")
+                setTimeout(() => {
+                    console.log("3");
+                    setTimeout(() => {
+                        console.log("4")
+                    }, 1000)
+                }, 1000)
+            }, 1000)
+        }, 1000)
+
+// to get away from callback hell we have promises
+
+    </script>
+</body>
+
+</html>

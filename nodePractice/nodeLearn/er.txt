@@ -1,0 +1,3 @@
+partials wasn't loading with nodemon automatically
+for this we used 
+nodemon src/index.js -e js,hbs
