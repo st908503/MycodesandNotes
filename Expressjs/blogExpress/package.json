@@ -1,0 +1,17 @@
+{
+  "name": "blogexpress",
+  "version": "1.0.0",
+  "description": "This is a blog created  during express learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shasahank",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "express-handlebars": "^6.0.6"
+  }
+}
